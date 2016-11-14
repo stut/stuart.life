@@ -9,4 +9,4 @@ homepage_count: 10
 markdown: kramdown
 highlighter: null
 
-exclude: ["post-template.md"]
+destination: ../www
