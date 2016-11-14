@@ -1,0 +1,21 @@
+<div class="archive-links">
+<h3>Archives</h3>
+{% assign curyear = '' %}
+{% assign curmonth = '' %}
+{% for post in site.posts %}
+	{% assign thisyear = post.date | date: "%Y" %}
+	{% if curyear != thisyear %}
+		{% if curyear != '' %}
+			</div>
+		{% endif %}
+		<div><strong><a href="/{{ thisyear }}/">{{ thisyear }}</a>:</strong>
+		{% assign curyear = thisyear %}
+	{% endif %}
+	{% assign thismonth = post.date | date: "%m" %}
+	{% if curmonth != thismonth %}
+		<a href="/{{ thisyear }}/{{ thismonth }}/">{{ post.date | date: "%B" }}</a>
+		{% assign curmonth = thismonth %}
+	{% endif %}
+{% endfor %}
+</div>
+</div>

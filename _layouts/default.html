@@ -1,0 +1,26 @@
+---
+layout: compress
+---
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="{{ site.description }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ site.title }}</title>
+		<link href="https://fonts.googleapis.com/css?family=Monda:400,700" rel="stylesheet">
+		<link href="/css/normalize.css" rel="stylesheet">
+		<link href="/css/sl.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<a href="/"{% if page.section == 'log' %} class="current"{% endif %}>log</a>
+				<a href="/graphs"{% if page.section == 'graphs' %} class="current"{% endif %}>graphs</a>
+				<a href="/about"{% if page.section == 'about' %} class="current"{% endif %}>about</a>
+			</div>
+{{ content }}
+		</div>
+	</body>
+</html>
