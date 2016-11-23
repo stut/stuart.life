@@ -43,7 +43,7 @@ module Jekyll
             end
 
             if post.data.key?('potassium')
-                hba1c.push({"date" => thedate, "value" => post.data['potassium']})
+                potassium.push({"date" => thedate, "value" => post.data['potassium']})
             end
     	end
 

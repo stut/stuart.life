@@ -13,6 +13,7 @@ section: graphs
 <div id="glucose-chart" style="width: 640px; height: 200px;"></div>
 <div id="insulin-chart" style="width: 640px; height: 200px;"></div>
 <div id="hba1c-chart" style="width: 640px; height: 200px;"></div>
+<div id="potassium-chart" style="width: 640px; height: 200px;"></div>
 <div id="bp-chart" style="width: 640px; height: 200px;"></div>
 <div id="weight-chart" style="width: 640px; height: 200px;"></div>
 
@@ -65,6 +66,21 @@ d3.json('/data/hba1c.json', function(data) {
         x_accessor: 'date',
         y_accessor: 'value',
         y_label: 'mmol/mol'
+    });
+});
+d3.json('/data/potassium.json', function(data) {
+    data = MG.convert.date(data, 'date', '%Y-%m-%dT%H:%M:%SZ');
+    MG.data_graphic({
+        title: "Potassium",
+        data: data,
+        animate_on_load: true,
+        width: 640,
+        height: 200,
+        left: 100,
+        target: document.getElementById('potassium-chart'),
+        x_accessor: 'date',
+        y_accessor: 'value',
+        y_label: 'mmol/L'
     });
 });
 d3.json('/data/weight.json', function(data) {
