@@ -13,6 +13,7 @@ module Jekyll
 		glucose = []
 		bolus = []
 		hba1c = []
+        potassium = []
 
     	site.posts.each do |post|
             thedate = post.date.strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -37,9 +38,13 @@ module Jekyll
     			bolus.push({"date" => thedate, "value" => post.data['bolus']})
     		end
 
-    		if post.data.key?('hba1c')
-    			hba1c.push({"date" => thedate, "value" => post.data['hba1c']})
-    		end
+            if post.data.key?('hba1c')
+                hba1c.push({"date" => thedate, "value" => post.data['hba1c']})
+            end
+
+            if post.data.key?('potassium')
+                hba1c.push({"date" => thedate, "value" => post.data['potassium']})
+            end
     	end
 
     	path = File.join(site.source, 'data')
@@ -49,7 +54,8 @@ module Jekyll
     	File.write(File.join(path, 'weight.json'), JSON.pretty_generate(weight))
     	File.write(File.join(path, 'insulin.json'), JSON.pretty_generate([insulin,bolus]))
     	File.write(File.join(path, 'glucose.json'), JSON.pretty_generate(glucose))
-    	File.write(File.join(path, 'hba1c.json'), JSON.pretty_generate(hba1c))
+        File.write(File.join(path, 'hba1c.json'), JSON.pretty_generate(hba1c))
+        File.write(File.join(path, 'potassium.json'), JSON.pretty_generate(potassium))
     end
   end
 end

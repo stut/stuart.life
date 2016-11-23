@@ -6,10 +6,10 @@ section: about
 
 My name is Stuart and I am alive, for now. This site is here to catalogue my efforts to stay that way. My _challenges_ include:
 
-* I am overweight.
-* I have type II diabetes.
-* I have high blood pressure.
-* I have chronic kidney disease thanks to not controlling my diabetes for many years.
+* Being overweight.
+* Having type II diabetes.
+* Having high blood pressure.
+* Having chronic kidney disease thanks to not controlling my diabetes for many, many years.
 
 ### Why publish this data?
 
@@ -23,4 +23,4 @@ Certainly. The best way to get in touch is either via <a href="https://twitter.c
 
 ### How does this site work?
 
-The site is maintained using Jekyll with a custom stylesheet and some custom plugins to create the graphs and archives. You can <a href="https://github.com/stut/stuart.life">see the source on Github</a>.
+The site is maintained using Jekyll with a custom stylesheet and some custom plugins to create the graph data and archives. You can <a href="https://github.com/stut/stuart.life">see the source on Github</a>.
