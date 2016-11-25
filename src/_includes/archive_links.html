@@ -2,7 +2,7 @@
 <h3>Archives</h3>
 {% assign curyear = '' %}
 {% assign curmonth = '' %}
-{% for post in site.posts %}
+{% for post in site.posts reversed %}
 	{% assign thisyear = post.date | date: "%Y" %}
 	{% if curyear != thisyear %}
 		{% if curyear != '' %}
