@@ -42,13 +42,15 @@
 				// Intentional repeat.
 				$cmd[] = 'jekyll build';
 				$cmd[] = 'cd /var/www/stuart.life';
-				$cmd[] = 'git add .';
+				$cmd[] = 'git add --all .';
 				$cmd[] = 'git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
 				$cmd[] = 'git push';
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
 				ob_start();
 				passthru($cmd);
-				l('<textarea style="width: 100%; height: 60px;">'.ob_get_clean().'</textarea>');
+				echo '</ul>';
+				echo '<pre style="white-space: nowrap;">'.ob_get_clean().'</pre>';
+				echo '<ul>';
 			}
 		}
 		
