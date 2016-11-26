@@ -1,8 +1,8 @@
 <?php
-	function log($msg, $error = false) {
+	function l($msg, $error = false) {
 		echo '<li style="color: '.($error ? 'red' : 'black').'; font-weight: '.($error ? 'bold' : 'normal').';">'.$msg.'</li>';
 	}
-	function error($msg) { log($msg, true); }
+	function e($msg) { l($msg, true); }
 
 	define('BASEPATH', realpath(__DIR__.'/../src/_posts'));
 
@@ -14,13 +14,13 @@
 
 		$ts = strtotime($_POST['metadata']['date']);
 		if (!$ts) {
-			error('Invalid date!');
+			e('Invalid date!');
 		} else {
 			$dest = BASEPATH.DIRECTORY_SEPARATOR.date('Y-m-d-Hi', $ts).'.md';
-			log('Dest: '.htmlspecialchars(substr($dest, strlen('/var/www/stuart.life'))));
+			l('Dest: '.htmlspecialchars(substr($dest, strlen('/var/www/stuart.life'))));
 			
 			if (file_exists($dest)) {
-				error('File already exists!');
+				e('File already exists!');
 			} else {
 				$fp = fopen($dest, 'wt');
 				fwrite($fp, '---'.PHP_EOL);
@@ -34,12 +34,12 @@
 					fwrite($fp, $content.PHP_EOL);
 				}
 				fclose($fp);
-				log('File written successfully.');
+				l('File written successfully.');
 				
-				$cmd = 'cd /var/www/stuart.life && git add . && git commit -m "'.date('Y-m-d-Hi', $ts).'" && git push';
+				$cmd = 'cd /var/www/stuart.life && git add . && git commit -m "'.date('Y-m-d-Hi', $ts).'" && git push && cd src && jekyll build && jekyll build';
 				$output = `$cmd`;
 				foreach (explode($output, "\n") as $line) {
-					log(rtrim($line));
+					l(rtrim($line));
 				}
 			}
 		}
