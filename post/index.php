@@ -46,7 +46,10 @@
 				// Intentional repeat.
 				$cmd[] = '/usr/local/bin/jekyll build';
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
-				$output = `$cmd`;
+				l($cmd);
+				ob_start();
+				passthru($cmd);
+				$output = ob_get_clean();
 				foreach (explode($output, "\n") as $line) {
 					l(rtrim($line));
 				}
