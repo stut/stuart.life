@@ -48,7 +48,7 @@
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
 				ob_start();
 				passthru($cmd);
-				l('<pre>'.ob_get_clean().'</pre>');
+				l('<textarea style="width: 100%; height: 60px;">'.ob_get_clean().'</textarea>');
 			}
 		}
 		
