@@ -50,9 +50,10 @@
 				ob_start();
 				passthru($cmd);
 				$output = ob_get_clean();
-				foreach (explode($output, "\n") as $line) {
-					l(rtrim($line));
-				}
+				//foreach (explode($output, "\n") as $line) {
+				//	l(rtrim($line));
+				//}
+				l($output);
 			}
 		}
 		
