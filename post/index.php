@@ -36,7 +36,7 @@
 				fclose($fp);
 				l('File written successfully.');
 				
-				$cmd = 'cd /var/www/stuart.life && git add . && git commit -m "'.date('Y-m-d-Hi', $ts).'" && git push && cd src && jekyll build && jekyll build';
+				$cmd = 'cd /var/www/stuart.life && /usr/bin/git add . && /usr/bin/git commit -m "'.date('Y-m-d-Hi', $ts).'" && /usr/bin/git push && cd src && /usr/local/bin/jekyll build && /usr/local/bin/jekyll build';
 				$output = `$cmd`;
 				foreach (explode($output, "\n") as $line) {
 					l(rtrim($line));
