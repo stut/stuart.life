@@ -46,9 +46,9 @@
 				$cmd[] = 'git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
 				$cmd[] = 'git push';
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
+				echo '</ul></div>';
 				ob_start();
 				passthru($cmd);
-				echo '</ul></div>';
 				echo '<pre>'.ob_get_clean().'</pre>';
 			}
 		}
