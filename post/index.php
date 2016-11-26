@@ -48,9 +48,8 @@
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
 				ob_start();
 				passthru($cmd);
-				echo '</ul>';
-				echo '<pre style="white-space: nowrap;">'.ob_get_clean().'</pre>';
-				echo '<ul>';
+				echo '</ul></div>';
+				echo '<pre>'.ob_get_clean().'</pre>';
 			}
 		}
 		
