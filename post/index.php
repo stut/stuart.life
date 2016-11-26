@@ -38,8 +38,8 @@
 				
 				$cmd = array();
 				$cmd[] = 'cd /var/www/stuart.life';
-				$cmd[] = '/usr/bin/git add .';
-				$cmd[] = '/usr/bin/git commit -m "'.date('Y-m-d-Hi', $ts).'"';
+				$cmd[] = '/usr/bin/git add src/_posts/*.md';
+				$cmd[] = '/usr/bin/git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
 				$cmd[] = '/usr/bin/git push';
 				$cmd[] = 'cd /var/www/stuart.life/src';
 				$cmd[] = '/usr/local/bin/jekyll build';
@@ -57,6 +57,8 @@
 		}
 		
 		echo '</ul></p>';
+		
+		exit;
 	}
 	
 	require 'form.html';
