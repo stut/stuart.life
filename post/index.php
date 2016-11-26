@@ -1,0 +1,50 @@
+<?php
+	function log($msg, $error = false) {
+		echo '<li style="color: '.($error ? 'red' : 'black').'; font-weight: '.($error ? 'bold' : 'normal').';">'.$msg.'</li>';
+	}
+	function error($msg) { log($msg, true); }
+
+	define('BASEPATH', realpath(__DIR__.'/../src/_posts'));
+
+	require __DIR__.'/header.html';
+	register_shutdown_function(function() { require __DIR__.'/footer.html'; });
+
+	if (!empty($_POST)) {
+		echo '<p><ul>';
+
+		$ts = strtotime($_POST['metadata']['date']);
+		if (!$ts) {
+			error('Invalid date!');
+		} else {
+			$dest = BASEPATH.DIRECTORY_SEPARATOR.date('Y-m-d-Hi', $ts).'.md';
+			log('Dest: '.htmlspecialchars(substr($dest, strlen('/var/www/stuart.life'))));
+			
+			if (file_exists($dest)) {
+				error('File already exists!');
+			} else {
+				$fp = fopen($dest, 'wt');
+				fwrite($fp, '---'.PHP_EOL);
+				foreach ($_POST['metadata'] as $key => $val) {
+					if (!empty($val)) {
+						fwrite($fp, $key.': '.$val.PHP_EOL);
+					}
+				}
+				fwrite($fp, '---'.PHP_EOL);
+				if (strlen(trim($_POST['content'])) > 0) {
+					fwrite($fp, $content.PHP_EOL);
+				}
+				fclose($fp);
+				log('File written successfully.');
+				
+				$cmd = 'cd /var/www/stuart.life && git add . && git commit -m "'.date('Y-m-d-Hi', $ts).'" && git push';
+				$output = `$cmd`;
+				foreach (explode($output, "\n") as $line) {
+					log(rtrim($line));
+				}
+			}
+		}
+		
+		echo '</ul></p>';
+	}
+	
+	require 'form.html';

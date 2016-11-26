@@ -7,5 +7,6 @@ glucose: 0
 insulin: 0
 bolus: 0
 hba1c: 0
+potassium: 0
 ---
 Optional post content here.
