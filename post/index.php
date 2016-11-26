@@ -36,7 +36,16 @@
 				fclose($fp);
 				l('File written successfully.');
 				
-				$cmd = 'cd /var/www/stuart.life && /usr/bin/git add . && /usr/bin/git commit -m "'.date('Y-m-d-Hi', $ts).'" && /usr/bin/git push && cd src && /usr/local/bin/jekyll build && /usr/local/bin/jekyll build';
+				$cmd = array();
+				$cmd[] = 'cd /var/www/stuart.life';
+				$cmd[] = '/usr/bin/git add .';
+				$cmd[] = '/usr/bin/git commit -m "'.date('Y-m-d-Hi', $ts).'"';
+				$cmd[] = '/usr/bin/git push';
+				$cmd[] = 'cd /var/www/stuart.life/src';
+				$cmd[] = '/usr/local/bin/jekyll build';
+				// Intentional repeat.
+				$cmd[] = '/usr/local/bin/jekyll build';
+				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
 				$output = `$cmd`;
 				foreach (explode($output, "\n") as $line) {
 					l(rtrim($line));
