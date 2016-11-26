@@ -31,29 +31,24 @@
 				}
 				fwrite($fp, '---'.PHP_EOL);
 				if (strlen(trim($_POST['content'])) > 0) {
-					fwrite($fp, $content.PHP_EOL);
+					fwrite($fp, $_POST['content'].PHP_EOL);
 				}
 				fclose($fp);
 				l('File written successfully.');
 				
 				$cmd = array();
-				$cmd[] = 'cd /var/www/stuart.life';
-				$cmd[] = '/usr/bin/git add src/_posts/*.md';
-				$cmd[] = '/usr/bin/git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
-				$cmd[] = '/usr/bin/git push';
-				$cmd[] = 'cd /var/www/stuart.life/src';
-				$cmd[] = '/usr/local/bin/jekyll build';
+				$cmd[] = 'PATH=/usr/local/bin:/usr/bin cd /var/www/stuart.life/src';
+				$cmd[] = 'jekyll build';
 				// Intentional repeat.
-				$cmd[] = '/usr/local/bin/jekyll build';
+				$cmd[] = 'jekyll build';
+				$cmd[] = 'cd /var/www/stuart.life';
+				$cmd[] = 'git add .';
+				$cmd[] = 'git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
+				$cmd[] = 'git push';
 				$cmd = implode($cmd, ' 2>&1 && ').' 2>&1';
-				l($cmd);
 				ob_start();
 				passthru($cmd);
-				$output = ob_get_clean();
-				//foreach (explode($output, "\n") as $line) {
-				//	l(rtrim($line));
-				//}
-				l($output);
+				l('<pre>'.ob_get_clean().'</pre>');
 			}
 		}
 		
