@@ -1,6 +1,6 @@
 {% assign curdate = '' %}
 <table>
-{% for post in include.posts limit=include.postcount %}
+{% for post in include.posts limit:include.postcount %}
 	{% assign thisdate = post.date | date_to_string %}
 	{% if curdate != thisdate %}
 		{% if curdate != '' %}
