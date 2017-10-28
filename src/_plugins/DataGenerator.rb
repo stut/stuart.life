@@ -15,7 +15,7 @@ module Jekyll
 		hba1c = []
         potassium = []
 
-    	site.posts.each do |post|
+    	site.posts.docs.each do |post|
             thedate = post.date.strftime('%Y-%m-%dT%H:%M:%SZ')
     		if post.data.key?('bptop') and post.data.key?('bpbot')
     			bptop.push({"date" => thedate, "value" => post.data['bptop']})

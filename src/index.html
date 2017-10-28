@@ -2,5 +2,5 @@
 layout: default
 section: log
 ---
-{% assign homepage_posts=site.posts limit:site.homepage_count %}
-{% include posts.html posts=homepage_posts %}
+
+{% include posts.html posts=site.posts postcount=10 %}
