@@ -37,13 +37,13 @@
 		{% capture bolus %}{{ post.bolus }} unit{% if post.bolus != 1 %}s{% endif %}{% endcapture %}
 		{% include measurement.html field='Bolus' value=bolus %}
 	{% endif %}
-	{% if post.potassium %}
-		{% capture potassium %}{{ post.potassium }} mmol/L{% endcapture %}
-		{% include measurement.html field='Potassium' value=potassium %}
-	{% endif %}
 	{% if post.hba1c %}
 		{% capture hba1c %}{{ post.hba1c }} mmol/mol{% endcapture %}
 		{% include measurement.html field='HbA1c' value=hba1c %}
+	{% endif %}
+	{% if post.potassium %}
+		{% capture potassium %}{{ post.potassium }} mmol/L{% endcapture %}
+		{% include measurement.html field='Potassium' value=potassium %}
 	{% endif %}
 	{% assign content = post.content | strip_newlines %}
 	{% if content != '' %}
