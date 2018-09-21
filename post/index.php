@@ -1,5 +1,5 @@
 <?php
-	date_default_timezone_set('Europe/London');
+	date_default_timezone_set('UTC');
 
 	function l($msg, $error = false) {
 		echo '<li style="color: '.($error ? 'red' : 'black').'; font-weight: '.($error ? 'bold' : 'normal').';">'.$msg.'</li>';
@@ -20,7 +20,7 @@
 		} else {
 			$dest = BASEPATH.DIRECTORY_SEPARATOR.date('Y-m-d-Hi', $ts).'.md';
 			l('Dest: '.htmlspecialchars(substr($dest, strlen('/var/www/stuart.life'))));
-			
+
 			if (file_exists($dest)) {
 				e('File already exists!');
 			} else {
@@ -37,12 +37,12 @@
 				}
 				fclose($fp);
 				l('File written successfully.');
-				
+
 				$cmd = array();
 				$cmd[] = 'PATH=/usr/local/bin:/usr/bin cd /var/www/stuart.life/src';
 				$cmd[] = 'jekyll build';
 				// Intentional repeat.
-				$cmd[] = 'jekyll build';
+				$cmd[] = 'jekyll build -V';
 				$cmd[] = 'cd /var/www/stuart.life';
 				$cmd[] = 'git add --all .';
 				$cmd[] = 'git commit -a -m "'.date('Y-m-d-Hi', $ts).'"';
@@ -54,10 +54,10 @@
 				echo '<pre>'.ob_get_clean().'</pre>';
 			}
 		}
-		
+
 		echo '</ul></p>';
-		
+
 		exit;
 	}
-	
+
 	require 'form.html';
