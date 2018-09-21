@@ -1,6 +1,4 @@
 <?php
-	//date_default_timezone_set('Europe/London');
-	
 	function l($msg, $error = false) {
 		echo '<li style="color: '.($error ? 'red' : 'black').'; font-weight: '.($error ? 'bold' : 'normal').';">'.$msg.'</li>';
 	}

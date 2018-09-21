@@ -23,4 +23,6 @@ Certainly. The best way to get in touch is either via <a href="https://twitter.c
 
 ### How does this site work?
 
-The site is maintained using Jekyll with a custom stylesheet and some custom plugins to create the graph data and archives. You can <a href="https://github.com/stut/stuart.life">see the source on Github</a>.
+The site is maintained using Jekyll with a custom stylesheet and some custom plugins to create the graph data and archives. The bulk of the data is exported from a website provided by the renal unit at Royal Berkshire Hospital called <a href="https://www.patientview.org/">PatientView</a>. The rest is manually entered.
+
+You can <a href="https://github.com/stut/stuart.life">see the source on Github</a>.

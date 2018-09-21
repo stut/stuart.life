@@ -22,7 +22,7 @@
 		{% include measurement.html field='BP' value=bp %}
 	{% endif %}
 	{% if post.weight %}
-		{% capture weight %}{{ post.weight | divided_by: 14 }}st {{ post.weight | modulo: 14 }}lbs{% endcapture %}
+		{% capture weight %}{{ post.weight | divided_by: 14 }}st {{ post.weight | modulo: 14 }}kgs{% endcapture %}
 		{% include measurement.html field='Weight' value=weight %}
 	{% endif %}
 	{% if post.glucose %}

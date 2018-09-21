@@ -95,7 +95,7 @@ d3.json('/data/weight.json', function(data) {
         target: document.getElementById('weight-chart'),
         x_accessor: 'date',
         y_accessor: 'value',
-        y_label: 'lbs'
+        y_label: 'kgs'
     });
 });
 d3.json('/data/bp.json', function(data) {
