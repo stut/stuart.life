@@ -1,14 +1,11 @@
-[
-  [
+{
+  "units": "units",
+  "code": "insulin",
+  "name": "NovoRapid",
+  "readings": [
     {
       "date": "2018-09-21T14:20:51Z",
       "value": 24
     }
-  ],
-  [
-    {
-      "date": "2018-09-21T09:54:06Z",
-      "value": 20
-    }
   ]
-]
+}

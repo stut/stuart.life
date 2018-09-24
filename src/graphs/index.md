@@ -2,13 +2,7 @@
 layout: default
 section: graphs
 ---
-<link href="/mg/metricsgraphics.css" rel="stylesheet">
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js' charset='utf-8'></script>
-<script src="/mg/metricsgraphics.min.js"></script>
-<style>
-.mg-active-datapoint-container { font-size: small; }
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
 <div id="glucose-chart" style="width: 640px; height: 200px;"></div>
 <div id="insulin-chart" style="width: 640px; height: 200px;"></div>

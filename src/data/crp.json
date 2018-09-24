@@ -1,1 +1,1 @@
-{"code": "crp", "name": "CRP", "units": null, "readings": [{"date": "2017-06-26T06:40:00Z", "value": "9"}, {"date": "2017-08-15T13:23:00Z", "value": "11"}]}
+{"code": "crp", "name": "CRP", "readings": [{"date": "2017-06-26T06:40:00Z", "value": "9"}, {"date": "2017-08-15T13:23:00Z", "value": "11"}], "units": null}

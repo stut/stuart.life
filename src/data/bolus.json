@@ -1,0 +1,15 @@
+{
+  "units": "units",
+  "code": "bolus",
+  "name": "Levemir",
+  "readings": [
+    {
+      "date": "2018-09-21T09:54:06Z",
+      "value": 20
+    },
+    {
+      "date": "2018-09-24T11:27:41Z",
+      "value": 20
+    }
+  ]
+}
