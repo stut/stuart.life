@@ -4,112 +4,50 @@ section: graphs
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
-<div id="glucose-chart" style="width: 640px; height: 200px;"></div>
-<div id="insulin-chart" style="width: 640px; height: 200px;"></div>
-<div id="hba1c-chart" style="width: 640px; height: 200px;"></div>
-<div id="potassium-chart" style="width: 640px; height: 200px;"></div>
-<div id="bp-chart" style="width: 640px; height: 200px;"></div>
-<div id="weight-chart" style="width: 640px; height: 200px;"></div>
 
 <script>
-d3.json('/data/glucose.json', function(data) {
-    data = MG.convert.date(data, 'date', '%Y-%m-%dT%H:%M:%SZ');
-    MG.data_graphic({
-        title: "Glucose",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: document.getElementById('glucose-chart'),
-        x_accessor: 'date',
-        y_accessor: 'value',
-        y_label: 'mmol/L'
-    });
-});
-d3.json('/data/insulin.json', function(data) {
-    for (var i = 0; i < data.length; i++) {
-        data[i] = MG.convert.date(data[i], 'date', '%Y-%m-%dT%H:%M:%SZ');
+makeChart('insulin', 'Insulin', ['/data/insulin.json']);
+
+function makeChart(id, title, series_urls) {
+    document.write('<h3>' + title + '</h3>');
+    document.write('<canvas id="' + id + '-canvas" width="600" height="150"></canvas>');
+
+    var ctx = document.getElementById(id + '-canvas').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
     }
-    MG.data_graphic({
-        title: "Insulin",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: '#insulin-chart',
-        legend: ['Fast-acting','Bolus'],
-        legend_target: '.legend',
-        x_accessor: 'date',
-        y_accessor: 'value',
-        aggregate_rollover: true,
-        y_label: 'units'
-    });
 });
-d3.json('/data/hba1c.json', function(data) {
-    data = MG.convert.date(data, 'date', '%Y-%m-%dT%H:%M:%SZ');
-    MG.data_graphic({
-        title: "HbA1c",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: document.getElementById('hba1c-chart'),
-        x_accessor: 'date',
-        y_accessor: 'value',
-        y_label: 'mmol/mol'
-    });
-});
-d3.json('/data/potassium.json', function(data) {
-    data = MG.convert.date(data, 'date', '%Y-%m-%dT%H:%M:%SZ');
-    MG.data_graphic({
-        title: "Potassium",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: document.getElementById('potassium-chart'),
-        x_accessor: 'date',
-        y_accessor: 'value',
-        y_label: 'mmol/L'
-    });
-});
-d3.json('/data/weight.json', function(data) {
-    data = MG.convert.date(data, 'date', '%Y-%m-%dT%H:%M:%SZ');
-    MG.data_graphic({
-        title: "Weight",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: document.getElementById('weight-chart'),
-        x_accessor: 'date',
-        y_accessor: 'value',
-        y_label: 'kgs'
-    });
-});
-d3.json('/data/bp.json', function(data) {
-    for (var i = 0; i < data.length; i++) {
-        data[i] = MG.convert.date(data[i], 'date', '%Y-%m-%dT%H:%M:%SZ');
-    }
-    MG.data_graphic({
-        title: "Blood pressure",
-        data: data,
-        animate_on_load: true,
-        width: 640,
-        height: 200,
-        left: 100,
-        target: '#bp-chart',
-        legend: ['Systolic','Diastolic'],
-        legend_target: '.legend',
-        x_accessor: 'date',
-        y_accessor: 'value',
-        aggregate_rollover: true,
-        y_label: 'mmHg'
-    });
-});
+}
 </script>
