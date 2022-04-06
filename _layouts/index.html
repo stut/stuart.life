@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<nav id="index-page">
+    {%- assign groupedByYearAndMonth = site.posts | group_by_exp:"post","post.date | date:'%B %Y' " -%}
+    <!-- total posts: {{ posts.size }} -->
+
+    {%- for yearitem in groupedByYearAndMonth -%}
+    <h2>{{ yearitem.name }}</h2>
+    {%- for item in yearitem.items -%}
+    <a href="{{ item.url }}">{{ item.date | date:'%d'}}</a>
+    {% endfor %}
+    {% endfor %}
+</nav>
+
+<nav id="footer-links">
+    <a data-shortcut="a" href="about.html">(A)bout</a>
+    <a data-shortcut="b" href="#previous">start at the (B)eginning</a>
+    <a data-shortcut="r" href="#previous">most (R)ecent</a>
+    <a data-shortcut="t" href="https://twitter.com/stut" target="stut-on-twitter">(T)witter</a>
+</nav>

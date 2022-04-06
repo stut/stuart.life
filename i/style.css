@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'vga9';
+    src: url('/i/PxPlus_IBM_VGA9.ttf') format('truetype');
+}
+
+html {
+    background-color: #1c40ff;
+    color: #cdd1ff;
+    font-family: vga9;
+    margin: 0 0 3em 0;
+    padding: 0;
+}
+
+header {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 30px;
+    background: url(/i/header-bg.png) repeat-x;
+}
+
+nav > a,
+nav > a:link,
+nav > a:visited {
+    color: #cdd1ff;
+    padding: 0 2em;
+    text-decoration: none;
+}
+nav > a:active,
+nav > a:hover {
+    text-decoration: underline;
+}
+
+.titlewrap {
+    margin: 0 auto;
+    white-space: nowrap;
+    width: 230px;
+    background-color: #76d3f8;
+    border-top: 1px solid #2e63f4;
+    border-bottom: 1px solid #2e63f4;
+}
+h1 {
+    font-size: 1em;
+    margin: 0;
+    padding: 6px 8px;
+    color: #dffbfe;
+    border-top: 1px solid #5faafd;
+    border-bottom: 1px solid #5faafd;
+    text-align: center;
+    -webkit-box-shadow: 0px 1.2em 2px -5px #010001;
+    -moz-box-shadow: 0px 1.2em 2px -5px #010001;
+    box-shadow: 0px 1.2em 2px -5px #010001;
+}
+
+nav#footer-links {
+    background-color: #1c40ff;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    padding: 1em;
+}
+
+article, nav#index-page {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 1em;
+    line-height: 2em;
+}
+
+article {
+    line-height: 3em;
+}
+
+article h2 {
+    display: inline;
+    font-size: 1em;
+}
+
+nav#index-page > h2 {
+    text-align: center;
+}
+
+nav#index-page > a {
+    padding-left: 3em;
+}
+
+article > p {
+    text-indent: 50px;
+}
+article > p:first-child {
+    text-indent: unset;
+}

@@ -1,0 +1,15 @@
+title: Stuart's So-called Life
+email: stut@hey.com
+description: Daily ramblings from a mostly harmless human.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://stuart.life" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: stut
+github_username:  stut
+
+permalink: /:year-:month-:day:output_ext
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - .idea/*

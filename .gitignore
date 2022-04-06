@@ -1,4 +1,6 @@
-/auth
-/data
-/import-data.sh
-/www
+_site
+.idea
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
